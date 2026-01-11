@@ -1,0 +1,31 @@
+﻿@page "/"
+@inject IHttpContextAccessor HttpContextAccessor
+
+<h1>Hosting Demo – Blazor Server</h1>
+
+<table>
+    <tr>
+        <td><b>Environment</b></td>
+        <td>@Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")</td>
+    </tr>
+    <tr>
+        <td><b>Hostname</b></td>
+        <td>@System.Net.Dns.GetHostName()</td>
+    </tr>
+    <tr>
+        <td><b>HTTPS</b></td>
+        <td>@HttpContextAccessor.HttpContext?.Request.IsHttps</td>
+    </tr>
+    <tr>
+        <td><b>Port</b></td>
+        <td>@HttpContextAccessor.HttpContext?.Connection.LocalPort</td>
+    </tr>
+    <tr>
+        <td><b>Client IP</b></td>
+        <td>@HttpContextAccessor.HttpContext?.Connection.RemoteIpAddress</td>
+    </tr>
+    <tr>
+        <td><b>Server time (UTC)</b></td>
+        <td>@DateTime.UtcNow</td>
+    </tr>
+</table>
